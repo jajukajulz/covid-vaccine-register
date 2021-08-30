@@ -18,10 +18,10 @@ contract VaccineRegistry {
     uint _submissionBlockNumber
   );
   
-  // define the array of users i.e. vaccinees
+  // define the array of vaccine records i.e. vaccinees
   VaccineRecord[] public vaccine_records;
 
-  function registerUser(string calldata _identity_number, string calldata _first_name, string calldata _last_name, 
+  function addVaccinationRecord(string calldata _identity_number, string calldata _first_name, string calldata _last_name,
     string calldata _vaccination_id, string calldata _vaccination_details) external returns(uint){
 
     uint256 submissionBlockNumber = block.number;
@@ -32,11 +32,11 @@ contract VaccineRegistry {
     // trigger event for VaccineRecord registration
     emit registeredVaccineRecordEvent(_identity_number, _vaccination_id, submissionBlockNumber);
     
-    // return the user id
+    // return the vaccinee id
     return id;
   }
 
-  function getNumberOfUsers() external view returns(uint) {
+  function getNumberOfVaccinationRecords() external view returns(uint) {
     // return the length of the vaccine_records array
     return vaccine_records.length;
   }
