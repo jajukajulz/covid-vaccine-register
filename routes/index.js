@@ -58,12 +58,16 @@ router.post("/", function (req, res) {
   });
 });
 
-
-/* GET home page. */
+/* GET about page. */
 router.get("/about", function (req, res) {
-  console.log("about route");
+  console.log("about route (GET)");
   res.render( 'about', { title: "About", app_title: "COVID-19 Vaccine Register dApp" });
 });
 
+/* GET search page. */
+router.get("/search", function (req, res) {
+  console.log("search route (GET)");
+  res.render( 'search', { title: "Search", app_title: "COVID-19 Vaccine Register dApp" });
+});
 
 module.exports = router;
