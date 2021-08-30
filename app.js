@@ -4,6 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const sqlite3 = require("sqlite3").verbose(); // “.verbose()” method allows you to have more information in case of a problem.
+const {v4 : uuidv4} = require('uuid')
+
 
 // Creating the Express server
 var app = express();
@@ -34,10 +36,11 @@ const db = new sqlite3.Database(db_name, (err) => {
 
 // Creating covidregister table (identity_number, first_name, last_name, vaccination_date, vaccine_name, vaccine_place)
 const sql_create = `CREATE TABLE IF NOT EXISTS covidregister (
-  pk INTEGER PRIMARY KEY AUTOINCREMENT,
+  pk INT AUTO_INCREMENT PRIMARY KEY,
   identity_number VARCHAR(100) NOT NULL,
   first_name VARCHAR(100) NOT NULL,
   last_name VARCHAR(100) NOT NULL,
+  vaccination_id VARCHAR(100) NOT NULL,
   vaccination_date VARCHAR(100) NOT NULL,
   vaccine_name VARCHAR(100) NOT NULL,
   vaccine_place VARCHAR(100) NOT NULL
@@ -50,10 +53,15 @@ db.run(sql_create, (err) => {
   console.log("Successful creation of the 'covidregister' table");
 
   // Database seeding
-  const sql_insert = `INSERT INTO covidregister (identity_number, first_name, last_name, vaccination_date, vaccine_name, 
-vaccine_place) VALUES
-  ('12345', 'John', 'Doe', '23 August 2021', 'Pfizer', '11145'),
-  ('67891', 'Bill', 'Gates', '23 August 2021', 'Pfizer', '11146');`;
+  const newId1 = uuidv4()
+  const newId2 = uuidv4()
+  console.log("UUID generated newId1 " + newId1);
+  console.log("UUID generated newId2 " + newId2);
+
+  const sql_insert = `INSERT INTO covidregister (identity_number, first_name, last_name, vaccination_id, 
+  vaccination_date, vaccine_name, vaccine_place) VALUES
+  ('12345', 'John', 'Doe', '${newId1}', '23 August 2021', 'Pfizer', '11145'),
+  ('67891', 'Bill', 'Gates', '${newId2}',  '23 August 2021', 'Pfizer', '11146');`;
   db.run(sql_insert, (err) => {
     if (err) {
       return console.error(err.message);
