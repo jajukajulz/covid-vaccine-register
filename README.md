@@ -43,7 +43,7 @@ Add a Vaccination Record via form
 Add to Blockchain by 1st clicking on `Enable Blockchain/Connect to Wallet` then `Add to Blockchain` (you will need to approve transaction in MetaMask).
 Open up `index.html` 
 
-![Screenshot of landing page](https://github.com/jajukajulz/covid-vaccine-register/tree/main/public/images/covid_vaccine_register.png?raw=true)
+![Screenshot of landing page](https://github.com/jajukajulz/covid-vaccine-register/blob/main/public/images/covid_vaccine_register.png?raw=true)
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
