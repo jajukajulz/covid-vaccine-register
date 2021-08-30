@@ -5,26 +5,25 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const sqlite3 = require("sqlite3").verbose(); // “.verbose()” method allows you to have more information in case of a problem.
 
-// import routers
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
 // Creating the Express server
 var app = express();
 
 // view engine setup, set to ejs
-app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // Configure middleware
 app.use(logger('dev'));
-//app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public'))); // serve static files in express then e.g. this will work http://localhost:3000/images/firefox-icon.png
+app.use(express.json());
+app.use(express.static('public')); // serve static files in express then e.g. this will work http://localhost:3000/images/firefox-icon.png
 app.use(express.urlencoded({ extended: false })); // use the middleware “express.urlencoded()” so that request.body retrieves the posted values
-//app.use(cookieParser());
+app.use(cookieParser());
+
+// import routers
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
 
 // Connection to the SQlite database
-const db_name = path.join(__dirname, "data", "apptest.db");
+const db_name = path.join(__dirname, 'data', 'apptest.db');
 console.log("Database full path - " + db_name);
 const db = new sqlite3.Database(db_name, (err) => {
   if (err) {
@@ -66,6 +65,7 @@ vaccine_place) VALUES
 // import routes
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
