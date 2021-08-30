@@ -120,13 +120,14 @@
                     <td><%= covidregister_records[i].vaccine_name %></td>
                     <td><%= covidregister_records[i].vaccine_place %></td>
                     <td><a  href="javascript:void(0);" class="btn btn-xs btn-success blockchain addUserToBlockchainBtn"
-                            id="<%= ("add_blockchain_" + covidregister_records[i].pk) %>"
-                            data-fname="<%= covidregister_records[i].first_name%>"
-                            data-fname="<%= covidregister_records[i].last_name%>"
-                            data-fname="<%= covidregister_records[i].vaccination_id%>"
-                            data-fname="<%= covidregister_records[i].vaccination_date%>"
-                            data-fname="<%= covidregister_records[i].vaccine_name%>"
-                            data-lname="<%=covidregister_records[i].vaccine_place%>">
+                            id="<%= ("add_blockchain_" + covidregister_records[i].vaccination_id) %>"
+                            data-identity_number="<%= covidregister_records[i].identity_number%>"
+                            data-first_name="<%= covidregister_records[i].first_name%>"
+                            data-last_name="<%= covidregister_records[i].last_name%>"
+                            data-vaccination_id="<%= covidregister_records[i].vaccination_id%>"
+                            data-vaccination_date="<%= covidregister_records[i].vaccination_date%>"
+                            data-vaccine_name="<%= covidregister_records[i].vaccine_name%>"
+                            data-vaccine_place="<%=covidregister_records[i].vaccine_place%>">
                         Add to Blockchain</a></td>
                   </tr>
                 <% } %>
