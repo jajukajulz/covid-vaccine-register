@@ -43,7 +43,8 @@ const sql_create = `CREATE TABLE IF NOT EXISTS covidregister (
   vaccination_id VARCHAR(100) NOT NULL,
   vaccination_date VARCHAR(100) NOT NULL,
   vaccine_name VARCHAR(100) NOT NULL,
-  vaccine_place VARCHAR(100) NOT NULL
+  vaccine_place VARCHAR(100) NOT NULL,
+  added_to_blockchain VARCHAR(100)
 );`;
 
 db.run(sql_create, (err) => {

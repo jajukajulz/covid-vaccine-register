@@ -43,11 +43,31 @@ router.post("/", function (req, res) {
   const vaccination_id = uuidv4();
   console.log("Generated vaccination ID: " + vaccination_id);
 
+  const added_to_blockchain_bool = 0;
+
   const vaccine_record = [req.body.identity_number, req.body.first_name, req.body.last_name, vaccination_id,
-    req.body.vaccination_date, req.body.vaccine_name, req.body.vaccine_place];
+    req.body.vaccination_date, req.body.vaccine_name, req.body.vaccine_place, added_to_blockchain_bool];
 
   const sql = "INSERT INTO covidregister (identity_number, first_name, last_name, vaccination_id, vaccination_date, " +
-      "vaccine_name, vaccine_place) VALUES (?,?,?,?,?,?,?)";
+      "vaccine_name, vaccine_place, added_to_blockchain) VALUES (?,?,?,?,?,?,?,?)";
+
+  db.run(sql, vaccine_record, (err) => {
+    if (err){
+      return console.error(err.message);
+      res.redirect("/?success=false");
+    }
+    res.redirect("/?success=true");
+  });
+});
+
+/* POST updateblockchain via AJAX. */
+router.post("/updateblockchain", function (req, res) {
+  console.log("updateblockchain ID number: " + req.body.identity_number);
+  console.log("updateblockchain vaccination ID: " + req.body.vaccination_id);
+
+  const added_to_blockchain_bool = 1;
+  const vaccine_record = [req.body.identity_number, vaccination_id, added_to_blockchain_bool];
+  const sql = "UPDATE covidregister SET  added_to_blockchain_bool = ? WHERE identity_number = ? AND vaccination_id = ?";
 
   db.run(sql, vaccine_record, (err) => {
     if (err){
