@@ -6,7 +6,7 @@ const sqlite3 = require("sqlite3").verbose(); // “.verbose()” method allows 
 var router = express.Router();
 
 // Connection to the SQlite database
-const db_name = path.join(__dirname, "data", "apptest.db");
+const db_name = path.join(__dirname, "../data", "apptest.db");
 console.log("Database full path - " + db_name);
 const db = new sqlite3.Database(db_name, (err) => {
   if (err) {
@@ -23,9 +23,9 @@ router.get("/", function (req, res) {
       return console.error(err.message);
     }
     console.log("rows - " + rows.length);
-    res.render( "index.ejs", {
+    res.render( 'index', {
       status: req.query.success === "true" ? "Saved to DB" : "No status",
-      covidregister_records: rows,
+      covidregister_records: rows, title: "Home", app_title: "COVID-19 Vaccine Register App"
     });
   });
 });
@@ -49,6 +49,13 @@ router.post("/", function (req, res) {
     }
     res.redirect("/?success=true");
   });
+});
+
+
+/* GET home page. */
+router.get("/about", function (req, res) {
+  console.log("about route");
+  res.render( 'about', { title: "About", app_title: "COVID-19 Vaccine Register App" });
 });
 
 
