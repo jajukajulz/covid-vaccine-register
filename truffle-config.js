@@ -19,10 +19,14 @@
  */
 
 // const HDWalletProvider = require('@truffle/hdwallet-provider');
-// const infuraKey = "fj4jll3k.....";
-//
+//const infuraKey = fs.readFileSync(".infurakey").toString().trim();
 // const fs = require('fs');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
+//const FROMADDRESS = fs.readFileSync(".fromaddress").toString().trim();
+
+
+//const infuraRinkebyURL = "https://rinkeby.infura.io/v3/"+infuraKey;
+//const maticMumbaiURL = "https://rpc-mumbai.matic.today";
 
 module.exports = {
   /**
@@ -44,7 +48,7 @@ module.exports = {
     //
     development: {
      host: "127.0.0.1",     // Localhost (default: none)
-     port: 8545,            // Standard Ethereum port (default: none)
+     port: 7545,            // Standard Ethereum port (default: none)
      network_id: "*",       // Any network (default: none)
     },
     // Another network with more advanced options...
@@ -72,6 +76,23 @@ module.exports = {
     // network_id: 2111,   // This network is yours, in the cloud.
     // production: true    // Treats this network as if it was a public net. (default: false)
     // }
+    //rinkeby: {
+    //       provider: function() {
+    //         return new HDWalletProvider(MNEMONIC, infuraRinkebyURL,1)
+    //       },
+    //       network_id: 4,
+    //       from: FROMADDRESS, // account from which to deploy
+    //     },
+    //
+    //     mumbai: {
+    //       provider: function() {
+    //         return new HDWalletProvider(MNEMONIC, maticMumbaiURL)
+    //       },
+    //       network_id: 80001,
+    //       confirmations: 2,
+    //       timeoutBlocks: 200,
+    //       skipDryRun: true
+    //     }
   },
 
   // Set default mocha options here, use special reporters etc.
