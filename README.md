@@ -28,13 +28,14 @@ Install project dependencies
 npm install
 ```
 
-Compile and Deploy smart contract (located in contracts/VaccineRegistry) to Ganache
+Compile and Deploy smart contract (located in contracts/VaccineRegistry) to Ganache. You can use the --reset flag to run all your migrations from the beginning. 
 ```
 truffle compile
 
 truffle migrate
 ```
-You can use the --reset flag to run all your migrations from the beginning. 
+
+Update the `vaccineRegisterContractAddress` in `/public/js/cvr_blockchain.js` with the address of the deployed contract.
 
 ## Usage
 Run `npm run start`  and then access http://localhost:3000 in your web browser
