@@ -85,7 +85,7 @@ const initialize = () => {
    */
 
   // in order to create a contract instance, we need the contract address and its ABI
-  vaccineRegisterContractAddress = "0x7BD0b4ceFe9f05Bb3610234203FDf0927b2A2eFf";
+  vaccineRegisterContractAddress = "0xa2e0B43a0F7c9eBCcF41d481D4F13027eC92E3fB";
 
   // the Application Binary interface (ABI) of the contract code is just a list of method signatures,
   // return types, members etc of the contract in a defined JSON format.
@@ -331,6 +331,7 @@ const initialize = () => {
           vaccination_id, vaccination_details);
       const data = await transaction.wait();
       console.log("data: ", data);
+      console.log("tx details:", transaction)
     } catch (err) {
       console.log("Error: ", err);
     }
