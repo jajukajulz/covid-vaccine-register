@@ -34,6 +34,7 @@ truffle compile
 
 truffle migrate
 ```
+You can use the --reset flag to run all your migrations from the beginning. 
 
 ## Usage
 Run `npm run start`  and then access http://localhost:3000 in your web browser
@@ -43,7 +44,7 @@ Add a Vaccination Record via form
 Add to Blockchain by 1st clicking on `Enable Blockchain/Connect to Wallet` then `Add to Blockchain` (you will need to approve transaction in MetaMask).
 Open up `index.html` 
 
-![Screenshot of landing page](https://github.com/jajukajulz/covid-vaccine-register/blob/main/public/images/covid_vaccine_register.png?raw=true)
+![Screenshot of landing page](https://github.com/jajukajulz/covid-vaccine-register/blob/main/public/img/covid_vaccine_register.png?raw=true)
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
@@ -51,7 +52,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 Please make sure to update tests as appropriate.
 
 ## Attribution
-COVID-19 Vaccination Register dApp may be used with attribution to source - Julian Kanjere (https://github.com/jajukajulz/)
+Vaccination Register dApp may be used with attribution to source - Julian Kanjere (https://github.com/jajukajulz/)
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
