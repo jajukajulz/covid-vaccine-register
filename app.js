@@ -59,10 +59,11 @@ db.run(sql_create, (err) => {
   console.log("UUID generated newId1 " + newId1);
   console.log("UUID generated newId2 " + newId2);
 
+  const formattedDate = new Date().toLocaleDateString('en-ZA',{year: 'numeric', month: 'long', day: '2-digit'});
   const sql_insert = `INSERT INTO covidregister (identity_number, first_name, last_name, vaccination_id, 
   vaccination_date, vaccine_name, vaccine_place) VALUES
-  ('12345', 'John', 'Doe', '${newId1}', '23 August 2021', 'Pfizer', '11145'),
-  ('67891', 'Bill', 'Gates', '${newId2}',  '23 August 2021', 'Pfizer', '11146');`;
+  ('12345', 'John', 'Doe', '${newId1}', '${formattedDate}', 'Pfizer', '11145'),
+  ('67891', 'Bill', 'Gates', '${newId2}',  '${formattedDate}', 'Pfizer', '11146');`;
   db.run(sql_insert, (err) => {
     if (err) {
       return console.error(err.message);
