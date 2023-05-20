@@ -23,7 +23,7 @@ contract VaccineRegistry {
   function addVaccinationRecord(string calldata _identity_number, string calldata _name_details,
     string calldata _vaccination_id, string calldata _vaccination_details) external returns(uint){
 
-    uint256 submissionBlockNumber = block.number;
+    uint256 submissionBlockNumber = block.number; //block is a global variable
 
     // get an instance of a VaccineRecord using the input variables and push into the array of vaccine_records, returns the id
     uint id = vaccine_records.push(VaccineRecord(_identity_number, _name_details, _vaccination_id, _vaccination_details)) - 1;
