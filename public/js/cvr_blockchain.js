@@ -4,6 +4,8 @@
 //Basic Actions Section
 const ethereumButton = document.querySelector(".enableEthereumButton");
 const showAccount = document.querySelector(".showAccount");
+const connectedAccount = document.querySelector("#connectedAccount");
+connectedAccount.style.display = 'none';
 
 // this function will be called when content in the DOM is loaded
 const initialize = () => {
@@ -34,9 +36,7 @@ const initialize = () => {
 
   /* Link our Enable Ethereum Button from the index.ejs file to a function that verifies if the browser is running MetaMask 
   and asks user permission to access their accounts. You should only initiate a connection request in response to direct user action,
-  such as clicking a button instead 
-  of initiating a connection request on page load.
-  */
+  such as clicking a button instead of initiating a connection request on page load. */
   ethereumButton.addEventListener("click", () => {
     getAccount();
   });
@@ -60,6 +60,8 @@ const initialize = () => {
         });
         const account = accounts[0];
         showAccount.innerHTML = account;
+        connectedAccount.style.display = 'block';
+        ethereumButton.style.display = 'none';
         console.log(account || "Not able to get accounts");
         console.log(isMetaMaskConnected());
         if (isMetaMaskConnected()) {
@@ -67,12 +69,16 @@ const initialize = () => {
         }
       } catch (err) {
         var message_description = "Access to your Ethereum account rejected.";
+        ethereumButton.style.display = 'block';
+        connectedAccount.style.display = 'none';
 
         //TODO - trigger pop up notification
         return console.log(message_description);
       }
     } else {
       console.log("Please install MetaMask");
+      ethereumButton.style.display = 'block';
+      connectedAccount.style.display = 'none';
     }
   }
 
@@ -327,7 +333,8 @@ const initialize = () => {
     }
 
     try {
-      const transaction = await vaccineRegisterContract.addVaccinationRecord(identity_number, name_details,
+      const identity_number_string = String(identity_number)
+      const transaction = await vaccineRegisterContract.addVaccinationRecord(identity_number_string, name_details,
           vaccination_id, vaccination_details);
       const data = await transaction.wait();
       console.log("data: ", data);
