@@ -18,7 +18,6 @@
 
 <body>
 <h1><%= app_title %></h1>
-<p>You are here: <%= title %></p>
 <section>
   <div class="container-fluid">
     <div class="jumbotron">
@@ -26,10 +25,8 @@
       </div>
     </div>
 
-    <h2>Blockchain Setup</h2>
-    <button class="enableEthereumButton">Enable Ethereum / Connect to Wallet</button>
-    <br>
-    <p>Connected Account: <span class="showAccount"></span></p>
+    <button class="enableEthereumButton">Connect to MetaMask</button>
+    <p id="connectedAccount">Connected Account: <span class="showAccount"></span></p>
 
     <hr>
 
