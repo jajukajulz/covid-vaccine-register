@@ -68,7 +68,7 @@ db.run(sql_create, (err) => {
     if (err) {
       return console.error(err.message);
     }
-    console.log("Successful creation of 2 covidregister records");
+    console.log("Successful creation of 2 vaccine register records");
   });
 });
 

@@ -26,7 +26,7 @@ router.get("/", function (req, res) {
     console.log("rows - " + rows.length);
     res.render( 'index', {
       status: req.query.success === "true" ? "Saved to DB" : "No status",
-      covidregister_records: rows, title: "Home", app_title: "COVID-19 Vaccine Register dApp"
+      covidregister_records: rows, title: "Home", app_title: "Vaccine Register dApp"
     });
   });
 });
