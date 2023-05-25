@@ -1,7 +1,6 @@
 # covid-vaccine-register
-A blockchain-enabled COVID-19 register. This dApp illustrates how a credible COVID-19 register can be created on the blockchain - 
-blockchain serves as a single source of credible truth and anyone (any authority, entrance marshall etc) can query the blockchain
- to see if a claimed vaccination ID is legitimate.
+A blockchain-enabled vaccine register. This dApp illustrates how a credible vaccine register (e.g. for use during pandemics) can be created on the blockchain - 
+blockchain serves as a single source of credible truth and anyone (any authority, entrance marshall etc) can query the blockchain to see if a claimed vaccination ID is legitimate.
 
 ## Installation
 Clone the project repository
